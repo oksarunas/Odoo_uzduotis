@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- Tree View -->
+    <record id="equipment_register_tree_view" model="ir.ui.view">
+        <field name="name">equipment_register_tree_view</field>
+        <field name="model">equipment.register</field>
+        <field name="arch" type="xml">
+            <tree string="Įrangos registras">
+                <field name="name"/>
+                <field name="serial_number"/>
+                <field name="description"/>
+                <field name="company_id"/>
+                <field name="create_uid"/>
+                <field name="employee_ids"/>
+                <field name="acquisition_date"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="equipment_register_form_view" model="ir.ui.view">
+        <field name="name">equipment_register_form</field>
+        <field name="model">equipment.register</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="serial_number"/>
+                        <field name="description"/>
+                        <field name="company_id"/>
+                        <field name="create_uid" readonly="1"/>
+                        <field name="employee_ids" widget="many2many_tags"/>
+                        <field name="acquisition_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="equipment_register_action" model="ir.actions.act_window">
+        <field name="name">Equipment Register</field>
+        <field name="res_model">equipment.register</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="equipment_register_tree_view"/>
+    </record>
+
+    <!-- Menus -->
+    <menuitem id="equipment_register_root" name="Equipment Register" parent="base.menu_administration"/>
+    <menuitem id="equipment_register_menu" name="Equipment List" parent="equipment_register_root" action="equipment_register_action"/>
+</odoo>
