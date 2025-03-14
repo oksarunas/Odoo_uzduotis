@@ -1,0 +1,26 @@
+<odoo>
+    <record id="equipment_filter_wizard_form" model="ir.ui.view">
+        <field name="name">equipment.filter.wizard.form</field>
+        <field name="model">equipment.filter.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="employee_id"/>
+                </group>
+                <footer>
+                    <button name="generate_report" string="Generate" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="equipment_filter_action" model="ir.actions.act_window">
+        <field name="name">Įrangos filtras</field>
+        <field name="res_model">equipment.filter.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem id="equipment_filter_menu" name="Įrangos filtras" parent="equipment_register_root" action="equipment_filter_action"/>
+</odoo>
